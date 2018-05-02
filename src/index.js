@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 const BUTCHER_PRODUCTS = [
   'Tenderloin',
   'Short ribs',
@@ -5,23 +8,68 @@ const BUTCHER_PRODUCTS = [
   'Ribeye'
 ]
 
-// Define these exported classes
+class Passenger extends React.Component {
+  render() {
+    return <li>{ this.props.name }</li>
+  }
+}
+
 export class OlderCoaster extends React.Component {
-  // your code here
-}
+  render() {
+    return (
+      <div className="oldercoaster">
+        <p>Two grannies having the time of their life!</p>
+        <p>Passengers:</p>
+        <ul>
+            <Passenger name={ 'Agnes' }/>
+            <Passenger name={ 'Muriel' }/>
+          </ul>
+        </div>
+      )
+    }
+  }
 
-export class InFrontOfYou extends React.Component {
-  // your code here
-}
+  export class InFrontOfYou extends React.Component {
+    render() {
+      return (
+        <div>
+          <p>You shouldn't look too far.</p>
+          <p>Sometimes, the solution is right in front of you.</p>
+        </div>
+      )
+    }
+  }
 
-export class ButcherShop extends React.Component {
-  // your code here
-}
+  class ButcherItem extends React.Component {
+    render() {
+      return <li>{this.props.name}</li>
+    }
+  }
 
+  export class ButcherShop extends React.Component {
+
+    render() {
+      return (
+        <div className='butcher-shop'>
+          <p>Hello! We have the following products for sale today:</p>
+            <ul>
+              <ButcherItem name={ BUTCHER_PRODUCTS[0] } />
+              <ButcherItem name={ BUTCHER_PRODUCTS[1] } />
+              <ButcherItem name={ BUTCHER_PRODUCTS[2] } />
+              <ButcherItem name={ BUTCHER_PRODUCTS[3] } />
+            </ul>
+        </div>
+      )
+    }
+  }
+
+const container = [
+  <OlderCoaster />,
+  <InFrontOfYou />,
+  <ButcherShop />,
+]
 
 ReactDOM.render(
-  <div>
-    render your components here! Refer back to the previous README if you are lost
-  </div>,
+  container,
   document.getElementById('root')
 )
